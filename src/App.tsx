@@ -5,7 +5,7 @@ interface Waifu {
   url: string;
 }
 
-const WaifuGallery: React.FC = () => {
+const App: React.FC = () => {
   const [waifuImages, setWaifuImages] = useState<Waifu[]>([]);
   const [category, setCategory] = useState<string>('sfw'); // Default: sfw
   const [amount, setAmount] = useState<number>(10); // Jumlah gambar awal yang ditampilkan
@@ -138,4 +138,4 @@ const WaifuGallery: React.FC = () => {
   );
 };
 
-export default WaifuGallery;
+export default App;
