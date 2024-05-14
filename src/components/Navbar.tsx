@@ -14,7 +14,7 @@ const Navbar: React.FC<NavbarProps> = ({ links, ctaText }) => {
     <div className="bg-black w-full xl:grid xl:place-items-center">
       <nav className="bg-black text-slate-200 lg:flex xl:container">
         <div className="flex">
-          <a className="m-4 text-2xl font-bold " href="/">YourName</a>
+          <a className="m-4 text-2xl font-bold " href="/">Nyahaha-Img</a>
           <button className="px-4 my-2 mx-4 ml-auto font-bold rounded hover:bg-slate-800 hover:text-white lg:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>Menu</button>
         </div>
         <ul className={(showMobileMenu ? "" : "hidden") + " lg:ml-auto lg:flex"}>
