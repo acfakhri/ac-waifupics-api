@@ -1,48 +1,52 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { Menu, X } from 'react-feather';
+import { Link } from 'react-router-dom';
 
-interface NavbarProps {
-  links: string[];
-  ctaText?: string;
-}
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-// eslint-disable-next-line react-refresh/only-export-components
-const Navbar: React.FC<NavbarProps> = ({ links, ctaText }) => {
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <div className="bg-black w-full xl:grid xl:place-items-center">
-      <nav className="bg-black text-slate-200 lg:flex xl:container">
-        <div className="flex">
-          <a className="m-4 text-2xl font-bold " href="/">Nyahaha-Img</a>
-          <button className="px-4 my-2 mx-4 ml-auto font-bold rounded hover:bg-slate-800 hover:text-white lg:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>Menu</button>
+    <nav className="bg-gray-800">
+      <div className="max-w-7xl mx-auto px-4 py-3 md:py-6 flex justify-between items-center">
+        {/* Logo */}
+        <div>
+          <a href="/" className="text-white text-lg font-bold">Company Name</a>
         </div>
-        <ul className={(showMobileMenu ? "" : "hidden") + " lg:ml-auto lg:flex"}>
-          {links.map(str => <NavLink key={str} text={str} />)}
-          <li className="py-2 grid place-items-center lg:mx-5"><a href="/trending" className="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-teal-200 bg-teal-300 text-black">{ctaText ?? "Trending"}</a></li>
-          <li className="py-2 grid place-items-center lg:mx-5"><a href="/tags" className="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-teal-200 bg-teal-300 text-black">{ctaText ?? "Tags"}</a></li>
-        </ul>
-      </nav>
-    </div>
+
+        {/* Hamburger icon for mobile */}
+        <div className="md:hidden">
+          <button onClick={toggleMenu} className="text-gray-300 focus:outline-none">
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+
+        {/* Menu */}
+        <div className="hidden md:flex space-x-4">
+          <Link to={'/'} className="text-gray-300">Home</Link>
+          <Link to={'/tags'} className="text-gray-300">Tags</Link>
+          <Link to={'/trending'} className="text-gray-300">Trending</Link>
+        </div>
+
+        {/* Sign-in button */}
+        <div className="hidden md:block">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Sign In</button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} bg-gray-800`}>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          <Link to={'/'} className="block text-gray-300 py-2 px-4">Home</Link>
+          <Link to={'/tags'} className="block text-gray-300 py-2 px-4">Tags</Link>
+          <Link to={'/trending'} className="block text-gray-300 py-2 px-4">Trending</Link>
+        </div>
+      </div>
+    </nav>
   );
 };
 
-interface NavLinkProps {
-  text: string;
-}
-
-const NavLink: React.FC<NavLinkProps> = ({ text }) => {
-  return <li className="py-2 grid place-items-center lg:mx-5"><a href={`#${text.toLowerCase()}`} className="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">{text}</a></li>;
-};
-
-/*
-  Create Your Navbar in myNavBar:
-  - @links - Array of strings representing nav links.
-           - Each <a> link item will have a href of #str.toLowerCase() for page navigation.
-  - @ctaText - string to be displayed for call to action link.
-*/
-const myNavBar = <Navbar links={["Home", "Projects", "Articles", "About"]} ctaText="Contact"/>;
-
-// Render the navbar component to the root div element defined in the HTML file here for viewing purposes.
-ReactDOM.render(myNavBar, document.getElementById('root'));
-export default Navbar
+export default Navbar;

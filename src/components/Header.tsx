@@ -5,7 +5,7 @@ const Header: React.FC = () => {
 
     return (
         <>
-        <Navbar links={[]} />
+        <Navbar />
         </>
     );
 
