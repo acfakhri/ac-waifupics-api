@@ -14,12 +14,13 @@ const Navbar: React.FC<NavbarProps> = ({ links, ctaText }) => {
     <div className="bg-black w-full xl:grid xl:place-items-center">
       <nav className="bg-black text-slate-200 lg:flex xl:container">
         <div className="flex">
-          <a className="m-4 text-2xl font-bold " href="#home">YourName</a>
+          <a className="m-4 text-2xl font-bold " href="/">YourName</a>
           <button className="px-4 my-2 mx-4 ml-auto font-bold rounded hover:bg-slate-800 hover:text-white lg:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>Menu</button>
         </div>
         <ul className={(showMobileMenu ? "" : "hidden") + " lg:ml-auto lg:flex"}>
           {links.map(str => <NavLink key={str} text={str} />)}
-          <li className="py-2 grid place-items-center lg:mx-5"><a href="#" className="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-teal-200 bg-teal-300 text-black">{ctaText ?? "Contact"}</a></li>
+          <li className="py-2 grid place-items-center lg:mx-5"><a href="/trending" className="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-teal-200 bg-teal-300 text-black">{ctaText ?? "Trending"}</a></li>
+          <li className="py-2 grid place-items-center lg:mx-5"><a href="/tags" className="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-teal-200 bg-teal-300 text-black">{ctaText ?? "Tags"}</a></li>
         </ul>
       </nav>
     </div>
