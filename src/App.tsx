@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import TrendingList from './pages/Trending/TrendingList';
 import NotFound from './pages/NotFound';
