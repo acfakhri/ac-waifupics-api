@@ -6,19 +6,23 @@ import NotFound from './pages/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Taglist from './pages/Tag/TagList';
+import PopularList from './pages/Popular/PopularList';
 
 const App: React.FC = () => {
   return (
+    <div>
+    <Header />
     <Router>
-      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trending" element={<TrendingList />} />
         <Route path="/tags" element={<Taglist />}/>
+        <Route path="/popular" element={<PopularList />}/>       
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
     </Router>
+    <Footer />
+    </div>
   );
 }
 
