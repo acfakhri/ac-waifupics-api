@@ -299,13 +299,22 @@ const Jikan: React.FC = () => {
             {isGenre && (
               <div style={{ marginLeft: 'auto', display: 'flex', flexWrap: 'wrap', gap: 6, maxWidth: 500 }}>
                 {ANIME_GENRES.map(g => (
-                  <button key={g.id} onClick={() => setSelectedGenre(g)} style={{
-                    padding: '4px 12px', borderRadius: 20, border: 'none', cursor: 'pointer',
-                    fontSize: 12, fontWeight: 600, fontFamily: 'Nunito', transition: 'all 0.15s',
-                    background: selectedGenre.id === g.id ? 'linear-gradient(135deg,#ff2d78,#9b5de5)' : 'rgba(255,255,255,0.05)',
-                    color: selectedGenre.id === g.id ? 'white' : '#8888aa',
-                    border: selectedGenre.id === g.id ? 'none' : '1px solid rgba(255,255,255,0.07)',
-                  }}>{g.name}</button>
+                  <button key={g.id} onClick={() => setSelectedGenre(g)}   style={{
+                  padding: '4px 12px',
+                  borderRadius: 20,
+                  cursor: 'pointer',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  fontFamily: 'Nunito',
+                  transition: 'all 0.15s',
+                  background: selectedGenre.id === g.id
+                    ? 'linear-gradient(135deg,#ff2d78,#9b5de5)'
+                    : 'rgba(255,255,255,0.05)',
+                  color: selectedGenre.id === g.id ? 'white' : '#8888aa',
+                  border: selectedGenre.id === g.id
+                    ? 'none'
+                    : '1px solid rgba(255,255,255,0.07)',
+                }}>{g.name}</button>
                 ))}
               </div>
             )}
