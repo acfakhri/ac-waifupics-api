@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
               <Zap size={16} color="white" fill="white" />
             </div>
             <span style={{ fontFamily: 'Orbitron,sans-serif', fontWeight: 900, fontSize: 'clamp(12px,2.2vw,16px)', background: 'linear-gradient(135deg,#00d4ff,#9b5de5)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', letterSpacing: '0.06em' }}>
-              NYANKO
+              AC-WAIFUPICS
             </span>
           </Link>
 
