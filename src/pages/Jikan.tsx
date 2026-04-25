@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Search, X, Star, Film, BookOpen, Users, Award, ChevronDown,
+  Search, X, Star, BookOpen, Users, Award, ChevronDown,
   RefreshCw, AlertTriangle, ExternalLink, Calendar, Clock, Tv, TrendingUp
 } from 'react-feather';
 
@@ -124,7 +124,6 @@ const Jikan: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState(ANIME_GENRES[0]);
   const [selectedDay, setSelectedDay] = useState('monday');
-  const [selectedSeason, setSelectedSeason] = useState<SeasonItem | null>(null);
 
   const groups = [...new Set(ENDPOINTS.map(e => e.group))];
 
@@ -207,9 +206,10 @@ const Jikan: React.FC = () => {
   const isManga = (item: ContentItem): item is MangaItem => 'chapters' in item || 'volumes' in item;
   const isChar = (item: ContentItem): item is CharacterItem => 'name_kanji' in item || 'favorites' in item;
 
-  const getImage = (item: ContentItem) =>
-    item.images?.jpg?.large_image_url || item.images?.jpg?.image_url || 'https://placehold.co/225x320/0f0f1a/9b5de5?text=No+Image';
-
+  const getImage = (item: ContentItem) => {
+    const jpg = item.images?.jpg as any;
+    return jpg?.large_image_url || jpg?.image_url || 'https://placehold.co/225x320/0f0f1a/9b5de5?text=No+Image';
+  };
   const getTitle = (item: ContentItem) =>
     isChar(item) ? item.name : (item as AnimeItem).title_english || (item as AnimeItem).title;
 
