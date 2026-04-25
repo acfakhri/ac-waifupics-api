@@ -1,29 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import TrendingList from './pages/Trending/TrendingList';
+import WaifuPics from './pages/WaifuPics';
+import NekosBest from './pages/NekosBest';
+import Jikan from './pages/Jikan';
 import NotFound from './pages/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Taglist from './pages/Tag/TagList';
-import PopularList from './pages/Popular/PopularList';
 
-const App: React.FC = () => {
-  return (
-    <div>
-      <Router>
-        <Header />
+const App: React.FC = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <Router>
+      <Header />
+      <main style={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/trending" element={<TrendingList />} />
-          <Route path="/tags" element={<Taglist />} />
-          <Route path="/popular" element={<PopularList />} />
+          <Route path="/" element={<WaifuPics />} />
+          <Route path="/nekos" element={<NekosBest />} />
+          <Route path="/anime" element={<Jikan />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
-      </Router>
-    </div>
-  );
-}
+      </main>
+      <Footer />
+    </Router>
+  </div>
+);
 
 export default App;

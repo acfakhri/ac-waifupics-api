@@ -1,14 +1,6 @@
-import React from "react"
+import React from "react";
 import Navbar from "./Navbar";
 
-const Header: React.FC = () => {
+const Header: React.FC = () => <Navbar />;
 
-    return (
-        <>
-        <Navbar />
-        </>
-    );
-
-}
-
-export default Header
+export default Header;
